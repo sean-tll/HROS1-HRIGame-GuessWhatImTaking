@@ -15,21 +15,14 @@ class emotion():
             print("Initialization failed")
             sys.exit(1)
 
-    def show_emotion(self, emtion_class, emotion_level):
-        # gesture_thread = threading.Thread(target = api.PlayAction(4))
-        # test_thread = threading.Thread(target = self.test_helper())
-        # facial_thread = threading.Thread(target = emotionDisplay.main())
-        # sound_thread = threading.Thread(target = sound.sound_activate('happy',2))
-
+    def show_emotion(self, emotion_class, emotion_level):
+        
         api_map = {'happy3': 4, 'happy2': 5, 'anger2': 6, 'anger3': 7, 'fear3': 11,
                    'fear2': 12, 'surprise2': 13, 'surprise3': 14, 'sad2': 17, 'sad3': 18}
 
-
-        # facial_thread.start()
-        # sound_thread.start()
-        emotionDisplay.main()
-        sound.sound_activate(emtion_class, emotion_level)
-        api.PlayAction(api_map[emtion_class + repr(emotion_level)])
+        emotionDisplay.main(emotion_class, emotion_level)
+        sound.sound_activate(emotion_class, emotion_level)
+        api.PlayAction(api_map[emotion_class + repr(emotion_level)])
 
     def emotion_finished(self):
         api.ServoShutdown()
